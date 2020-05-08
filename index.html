@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/animation.css" />
+    <script src="script//modules/jquery-3.4.1.min.js"></script>
+    <script src="script//main.js"></script>
+    <script src="script//controller.js"></script>
+    <script src="script//view.js"></script>
+    <script src="script//model.js"></script>
+    <script src="script//base-view.js"></script>
+    <script src="script//code-parser.js"></script>
+    <title>Rhine Lab</title>
+  </head>
+  <body>
+    <header>
+      <img id="logo" src="./style/images/rhine.png" />
+      <div id="title">Rhine Lab</div>
+      <div id="sub-title">Culture Land</div>
+    </header>
+
+    <div id="context">
+      <div id="button-section">
+        <span class="effect-halo effect-halo-blink"></span>
+        <span class="effect-halo effect-halo-blink"></span>
+        <span id="button-core">
+          <img
+            id="core-img"
+            class="animation-dom"
+            src="./style/images/efmom.png"
+          />
+        </span>
+      </div>
+    </div>
+
+    <div id="overlay" class="overlay">
+      <div id="text-box" class="animation-dom">
+        <img src="./style/images/icon.png" id="text-icon" />
+        <img src="./style/images/cross.png" id="close-icon" />
+        <div id="title">카카오톡 메시지를 붙여넣으세요</div>
+        <textarea id="text-input"> </textarea>
+        <div id="button" class="animation-dom">GO!</div>
+      </div>
+
+      <div id="item-box"></div>
+    </div>
+  </body>
+</html>

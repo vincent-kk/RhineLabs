@@ -1,0 +1,202 @@
+#text-input {
+  height: 200px;
+  width: 50%;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", "Montserrat", sans-serif;
+  transition: 0.7s all;
+  overflow: hidden;
+  height: 100vh;
+}
+img,
+div {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+body {
+  background-color: #f8e3e8;
+}
+header > #logo {
+  display: block;
+  pointer-events: none;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+header > #title {
+  font-weight: 900;
+  font-size: 6em;
+  text-align: center;
+  text-shadow: 0 0 2px #666;
+  color: #222222;
+  margin: 20px 0 0 0;
+  line-height: 1;
+}
+
+header > #sub-title {
+  font-weight: 600;
+  font-size: 2.75em;
+  text-align: center;
+  text-shadow: 0 0 2px #666;
+  color: #525252;
+  margin-bottom: 60px;
+}
+#context > #button-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 240px;
+  height: 240px;
+}
+#context > #button-section > #button-core {
+  cursor: pointer;
+  position: absolute;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  background-color: #d55c5a;
+  border-radius: 50%;
+}
+
+#context > #button-section > #button-core > #core-img {
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  top: 15%;
+  left: 15%;
+  pointer-events: none;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(250, 242, 232, 0.7);
+  background-attachment: fixed;
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+#overlay > #text-box {
+  position: relative;
+  background-color: #fff;
+  margin: 5vh auto;
+  padding: 40px 8px 20px;
+  width: 400px;
+  height: 250px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#overlay > #text-box > #text-icon {
+  position: absolute;
+  pointer-events: none;
+  height: 125px;
+  width: 125px;
+  top: -45px;
+  left: -60px;
+}
+#overlay > #text-box > #close-icon {
+  position: absolute;
+  height: 75px;
+  width: 75px;
+  top: -30px;
+  left: calc(100% - 50px);
+}
+#overlay > #text-box > #title {
+  text-align: center;
+  color: #d55c5a;
+  font-size: 20px;
+  font-weight: bold;
+}
+#overlay > #text-box > #text-input {
+  resize: none;
+  margin-top: 10px;
+  height: 150px;
+  width: 395px;
+}
+#overlay > #text-box > #text-input::-webkit-scrollbar {
+  display: none;
+}
+
+#overlay > #text-box > #button {
+  background-color: #d55c5a;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  height: 34px;
+  width: 40%;
+  margin: 15px 30% 0 30%;
+}
+
+#overlay > #item-box {
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0 auto;
+  height: 500px;
+  width: 800px;
+  overflow: scroll;
+}
+
+#overlay > #item-box::-webkit-scrollbar {
+  display: none;
+}
+
+#overlay > #item-box > label > .item {
+  background-image: url(./images/giftcard.png);
+  background-size: cover;
+  height: 400px;
+  width: 800px;
+  margin-bottom: 20px;
+}
+
+#overlay > #item-box > label > .item > .pin {
+  height: 105px;
+  width: 255px;
+  padding: 178px 52px 117px 493px;
+}
+
+#overlay > #item-box > label > .item > .pin > .pin-num {
+  text-align: center;
+  font-size: 20px;
+  color: black;
+}
+#overlay > #item-box > label > .item > .pin > .pin-num:nth-of-type(1) {
+  margin-top: 10%;
+}
+#overlay > #item-box > label > .item > .pin > .pin-num:nth-of-type(2) {
+  margin-top: 5px;
+}
+
+#overlay > #item-box > input[type="checkbox"] {
+  display: none;
+}
+
+#overlay > #item-box > input[type="checkbox"] + label .item {
+  opacity: 1;
+}
+#overlay > #item-box > input[type="checkbox"]:checked + label .item {
+  opacity: 0.25;
+}
+
+.effect-halo {
+  pointer-events: none;
+  position: absolute;
+  cursor: pointer;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  background-color: #f5cec7;
+  border-radius: 50%;
+}
