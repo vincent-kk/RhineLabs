@@ -1,12 +1,12 @@
 class View {
   constructor() {}
 
-  ObjectLinker(controller, views) {
+  ObjectLinker = (controller, views) => {
     this._controller = controller;
     this._views = views;
-  }
+  };
 
-  AddEventHandler(eventHandlers) {
+  AddEventHandler = (eventHandlers) => {
     if (eventHandlers === undefined) return;
     for (const key in eventHandlers) {
       if (eventHandlers.hasOwnProperty(key)) {
@@ -14,9 +14,9 @@ class View {
         this._views[key].AddEventHandler(element);
       }
     }
-  }
+  };
 
-  update(viewModel) {
+  update = (viewModel) => {
     if (viewModel === undefined) return;
     for (const key in viewModel) {
       if (viewModel.hasOwnProperty(key)) {
@@ -26,9 +26,9 @@ class View {
         }
       }
     }
-  }
+  };
 
-  GetViewData(view, type) {
+  GetViewData = (view, type) => {
     let data;
     switch (type) {
       case "code":
@@ -38,9 +38,9 @@ class View {
         break;
     }
     return data;
-  }
+  };
 
-  QuickChange(view, element) {
+  QuickChange = (view, element) => {
     this._views[view].QuickChange(element);
-  }
+  };
 }

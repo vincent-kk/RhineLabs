@@ -4,7 +4,7 @@ var controller;
 var base;
 var parser;
 
-$(document).ready(function() {
+$(document).ready(() => {
   console.log("ready");
 
   model = new Model();

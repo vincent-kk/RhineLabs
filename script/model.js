@@ -13,20 +13,20 @@ class Model {
         object: {
           "text-input": {
             modified: false,
-            data: { show: false }
+            data: { show: false },
           },
           "code-book": {
             modified: false,
-            data: []
-          }
-        }
-      }
+            data: [],
+          },
+        },
+      },
     };
   }
 
-  ObjectLinker(view) {
+  ObjectLinker = (view) => {
     this._view = view;
-  }
+  };
 
   /**
    * @param {*} changes
@@ -35,7 +35,7 @@ class Model {
    *   ...
    *  ]
    */
-  ChangeViewModel(changes) {
+  ChangeViewModel = (changes) => {
     for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         const element = changes[key];
@@ -45,18 +45,18 @@ class Model {
       }
     }
     this.updateView();
-  }
+  };
 
-  GetModelData(view, name) {
+  GetModelData = (view, name) => {
     return this.viewModel[view].object[name].data;
-  }
+  };
 
-  updateView() {
+  updateView = () => {
     this.modifiedBubbling();
     this._view.update(this.viewModel);
-  }
+  };
 
-  modifiedBubbling() {
+  modifiedBubbling = () => {
     for (const target in this.viewModel) {
       if (this.viewModel.hasOwnProperty(target)) {
         const view = this.viewModel[target];
@@ -68,5 +68,5 @@ class Model {
         }
       }
     }
-  }
+  };
 }

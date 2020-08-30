@@ -11,18 +11,18 @@ class BaseView {
     );
     this.haloEffect = $("#context > #button-section > .effect-halo");
   }
-  ObjectLinker(view) {
+  ObjectLinker = (view) => {
     this._view = view;
     this._controller = view.controller;
-  }
+  };
 
-  AddEventHandler(eventHandlers) {
+  AddEventHandler = (eventHandlers) => {
     this.centerButton.click(eventHandlers["center-button"]);
     this.goButton.click(eventHandlers["go-button"]);
     this.closeButton.click(eventHandlers["close-button"]);
-  }
+  };
 
-  update(data) {
+  update = (data) => {
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
         const element = data[key];
@@ -32,9 +32,9 @@ class BaseView {
         }
       }
     }
-  }
+  };
 
-  domUpdater(name, data) {
+  domUpdater = (name, data) => {
     switch (name) {
       case "text-input":
         this.showTextBox(data);
@@ -44,9 +44,9 @@ class BaseView {
         break;
       default:
     }
-  }
+  };
 
-  QuickChange(element) {
+  QuickChange = (element) => {
     switch (element) {
       case "goButton":
         this.goButton.addClass("press-button");
@@ -56,13 +56,13 @@ class BaseView {
         break;
       default:
     }
-  }
+  };
 
-  GetCodeData() {
+  GetCodeData = () => {
     return this.textInput.val();
-  }
+  };
 
-  makeCodeBook(data) {
+  makeCodeBook = (data) => {
     console.log(data);
     this.itemBox.empty();
     for (const key in data) {
@@ -72,9 +72,9 @@ class BaseView {
         this.itemBox.append(cardForm);
       }
     }
-  }
+  };
 
-  showTextBox(data) {
+  showTextBox = (data) => {
     if (data.show) {
       this.centerImage.addClass("press-button");
       setTimeout(() => {
@@ -96,9 +96,9 @@ class BaseView {
       this.overlay.addClass("fade-out").removeClass("fade-in");
       this.overlay.css({ opacity: "0", "pointer-events": "none" });
     }
-  }
+  };
 
-  createGiftCard(index, pin) {
+  createGiftCard = (index, pin) => {
     let element = `<input type="checkbox" id="check_${index}" />
                    <label for="check_${index}">
                      <div class="item animation-dom">
@@ -109,5 +109,5 @@ class BaseView {
                      </div>
                    </label>`;
     return element;
-  }
+  };
 }
