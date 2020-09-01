@@ -1,21 +1,28 @@
-var model;
-var view;
-var controller;
-var base;
-var parser;
+// let model;
+// let view;
+// let controller;
+// let base;
+// let parser;
 
 $(document).ready(() => {
   console.log("ready");
 
-  model = new Model();
-  view = new View();
-  controller = new Controller();
-  base = new BaseView();
-  parser = new CodeParser("CultureLand");
+  let model = new Model();
+  let view = new View();
+  let controller = new Controller();
+  let base = new BaseView();
+  let parser = new CodeParser("CultureLand");
 
   model.ObjectLinker(view);
   controller.ObjectLinker(model, view, parser);
   view.ObjectLinker(controller, { "base-view": base });
 
   controller.AddEventHandler();
+  controller.Preload("./style/images/", [
+    "cross.png",
+    "efmom.png",
+    "giftcard.png",
+    "icon.png",
+    "rhine.png",
+  ]);
 });

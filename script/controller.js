@@ -16,6 +16,16 @@ class Controller {
     });
   };
 
+  Preload = (path, images) => {
+    for (const key in images) {
+      if (images.hasOwnProperty(key)) {
+        const element = images[key];
+        let image = new Image();
+        image.src = path + element;
+      }
+    }
+  };
+
   /**
    *  [
    *   {view : <view name>, object : <object name>, data : <new data>},
