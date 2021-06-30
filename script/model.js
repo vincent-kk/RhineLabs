@@ -7,15 +7,19 @@
  */
 class Model {
   constructor() {
-    this.viewModel = {
-      "base-view": {
+    this._model = {
+      baseView: {
         modified: false,
         object: {
-          "text-input": {
+          textModal: {
             modified: false,
             data: { show: false },
           },
-          "code-book": {
+          textValue: {
+            modified: false,
+            data: "",
+          },
+          codeBook: {
             modified: false,
             data: [],
           },
@@ -24,7 +28,7 @@ class Model {
     };
   }
 
-  ObjectLinker = (view) => {
+  objectLinker = (view) => {
     this._view = view;
   };
 
@@ -35,31 +39,31 @@ class Model {
    *   ...
    *  ]
    */
-  ChangeViewModel = (changes) => {
+  updateModel = (changes) => {
     for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         const element = changes[key];
-        const targe = this.viewModel[element.view].object[element.object];
-        targe.modified = true;
-        if (element.data !== undefined) targe.data = element.data;
+        const target = this._model[element.view].object[element.object];
+        target.modified = true;
+        if (element.data !== undefined) target.data = element.data;
       }
     }
-    this.updateView();
+    this._updateView();
   };
 
-  GetModelData = (view, name) => {
-    return this.viewModel[view].object[name].data;
+  getModelData = (view, name) => {
+    return this._model[view].object[name].data;
   };
 
-  updateView = () => {
-    this.modifiedBubbling();
-    this._view.update(this.viewModel);
+  _updateView = () => {
+    this._modifiedBubbling();
+    this._view.update(this._model);
   };
 
-  modifiedBubbling = () => {
-    for (const target in this.viewModel) {
-      if (this.viewModel.hasOwnProperty(target)) {
-        const view = this.viewModel[target];
+  _modifiedBubbling = () => {
+    for (const target in this._model) {
+      if (this._model.hasOwnProperty(target)) {
+        const view = this._model[target];
         for (const key in view.object) {
           if (view.object.hasOwnProperty(key)) {
             const element = view.object[key];
