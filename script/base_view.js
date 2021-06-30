@@ -59,12 +59,11 @@ class BaseView {
     }
   };
 
-  getCodeData = () => {
+  _getCodeData = () => {
     return this._textInput.val();
   };
 
   _makeCodeBook = (data) => {
-    console.log(data);
     this._itemBox.empty();
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
