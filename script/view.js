@@ -1,17 +1,17 @@
 class View {
   constructor() {}
 
-  ObjectLinker = (controller, views) => {
+  objectLinker = (controller, views) => {
     this._controller = controller;
     this._views = views;
   };
 
-  AddEventHandler = (eventHandlers) => {
+  addEventHandler = (eventHandlers) => {
     if (eventHandlers === undefined) return;
     for (const key in eventHandlers) {
       if (eventHandlers.hasOwnProperty(key)) {
         const element = eventHandlers[key];
-        this._views[key].AddEventHandler(element);
+        this._views[key].addEventHandler(element);
       }
     }
   };
@@ -28,11 +28,11 @@ class View {
     }
   };
 
-  GetViewData = (view, type) => {
+  getViewData = (view, type) => {
     let data;
     switch (type) {
       case "code":
-        data = this._views[view].GetCodeData();
+        data = this._views[view].getCodeData();
         break;
       default:
         break;
@@ -40,7 +40,7 @@ class View {
     return data;
   };
 
-  QuickChange = (view, element) => {
-    this._views[view].QuickChange(element);
+  quickChange = (view, element) => {
+    this._views[view].quickChange(element);
   };
 }

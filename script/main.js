@@ -1,24 +1,18 @@
-// let model;
-// let view;
-// let controller;
-// let base;
-// let parser;
-
 $(document).ready(() => {
   console.log("ready");
 
-  let model = new Model();
-  let view = new View();
-  let controller = new Controller();
-  let base = new BaseView();
-  let parser = new CodeParser("CultureLand");
+  const model = new Model();
+  const view = new View();
+  const controller = new Controller();
+  const base = new BaseView();
+  const parser = new CodeParser("CultureLand");
 
-  model.ObjectLinker(view);
-  controller.ObjectLinker(model, view, parser);
-  view.ObjectLinker(controller, { "base-view": base });
+  model.objectLinker(view);
+  controller.objectLinker(model, view, parser);
+  view.objectLinker(controller, { baseView: base });
 
-  controller.AddEventHandler();
-  controller.Preload("./style/images/", [
+  controller.addEventHandler();
+  Controller.preload("./style/images/", [
     "cross.png",
     "efmom.png",
     "giftcard.png",

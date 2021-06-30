@@ -1,22 +1,7 @@
 class Controller {
   constructor() {}
-  ObjectLinker = (model, view, parser) => {
-    this._model = model;
-    this._view = view;
-    this._parser = parser;
-  };
 
-  AddEventHandler = () => {
-    this._view.AddEventHandler({
-      "base-view": {
-        "center-button": this.BaseView_ShowOverlay,
-        "go-button": this.BaseView_MakeGiftCard,
-        "close-button": this.BaseView_CloseOverlay,
-      },
-    });
-  };
-
-  Preload = (path, images) => {
+  static preload = (path, images) => {
     for (const key in images) {
       if (images.hasOwnProperty(key)) {
         const element = images[key];
@@ -26,6 +11,31 @@ class Controller {
     }
   };
 
+  static debounce = (callback, wait) => {
+    let timer;
+    return () => {
+      clearInterval(timer);
+      timer = setTimeout(callback, wait);
+    };
+  };
+
+  objectLinker = (model, view, parser) => {
+    this._model = model;
+    this._view = view;
+    this._parser = parser;
+  };
+
+  addEventHandler = () => {
+    this._view.addEventHandler({
+      baseView: {
+        onStartHandler: this.showOverlay,
+        onChangeHandler: this.updateText,
+        makeGiftCardHander: this.makeGiftCard,
+        onCloseHandler: this.closeOverlay,
+      },
+    });
+  };
+
   /**
    *  [
    *   {view : <view name>, object : <object name>, data : <new data>},
@@ -33,25 +43,35 @@ class Controller {
    *  ]
    */
 
-  BaseView_ShowOverlay = () => {
-    this._model.ChangeViewModel([
-      { view: "base-view", object: "text-input", data: { show: true } },
+  showOverlay = () => {
+    this._model.updateModel([
+      { view: "baseView", object: "textModal", data: { show: true } },
     ]);
   };
-  BaseView_MakeGiftCard = () => {
-    this._view.QuickChange("base-view", "goButton");
-    let text = this._view.GetViewData("base-view", "code");
-    let codes = this._parser.Run(text);
+
+  updateText = (text) => {
+    console.log(text);
+    // Controller.debounce(() => {
+    //   // this._model.updateModel([
+    //   //   { view: "baseView", object: "textValue", data: text },
+    //   // ]);
+    //   console.log(text);
+    // }, 500);
+  };
+  makeGiftCard = () => {
+    this._view.quickChange("baseView", "goButton");
+    let text = this._view.getModelData("baseView", "textValue");
+    let codes = this._parser.run(text);
     if (codes.length === 0) {
       return;
     }
-    this._model.ChangeViewModel([
-      { view: "base-view", object: "code-book", data: codes },
+    this._model.updateModel([
+      { view: "baseView", object: "codeBook", data: codes },
     ]);
   };
-  BaseView_CloseOverlay = () => {
-    this._model.ChangeViewModel([
-      { view: "base-view", object: "text-input", data: { show: false } },
+  closeOverlay = () => {
+    this._model.updateModel([
+      { view: "baseView", object: "textModal", data: { show: false } },
     ]);
   };
 }

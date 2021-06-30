@@ -17,9 +17,10 @@ class BaseView {
   };
 
   addEventHandler = (eventHandlers) => {
-    this._centerButton.click(eventHandlers["center-button"]);
-    this._goButton.click(eventHandlers["go-button"]);
-    this._closeButton.click(eventHandlers["close-button"]);
+    this._centerButton.click(eventHandlers["onStartHandler"]);
+    this._goButton.click(eventHandlers["makeGiftCardHander"]);
+    this._closeButton.click(eventHandlers["onCloseHandler"]);
+    this._textInput.change(eventHandlers["onChangeHandler"]);
   };
 
   update = (data) => {
@@ -36,10 +37,10 @@ class BaseView {
 
   _domUpdater = (name, data) => {
     switch (name) {
-      case "text-modal":
+      case "textModal":
         this._showTextBox(data);
         break;
-      case "code-book":
+      case "codeBook":
         this._makeCodeBook(data);
         break;
       default:
