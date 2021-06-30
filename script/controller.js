@@ -13,9 +13,11 @@ class Controller {
 
   static debounce = (callback, wait) => {
     let timer;
-    return () => {
+    return function () {
+      const context = this;
+      const args = arguments;
       clearInterval(timer);
-      timer = setTimeout(callback, wait);
+      timer = setTimeout(() => callback.apply(context, args), wait);
     };
   };
 
@@ -49,18 +51,15 @@ class Controller {
     ]);
   };
 
-  updateText = (text) => {
-    console.log(text);
-    // Controller.debounce(() => {
-    //   // this._model.updateModel([
-    //   //   { view: "baseView", object: "textValue", data: text },
-    //   // ]);
-    //   console.log(text);
-    // }, 500);
+  updateText = (e) => {
+    this._model.updateModel([
+      { view: "baseView", object: "textValue", data: e.target.value },
+    ]);
   };
+
   makeGiftCard = () => {
     this._view.quickChange("baseView", "goButton");
-    let text = this._view.getModelData("baseView", "textValue");
+    let text = this._model.getModelData("baseView", "textValue");
     let codes = this._parser.run(text);
     if (codes.length === 0) {
       return;
