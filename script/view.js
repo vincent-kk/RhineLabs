@@ -16,11 +16,11 @@ class View {
     }
   };
 
-  update = (viewModel) => {
-    if (viewModel === undefined) return;
-    for (const key in viewModel) {
-      if (viewModel.hasOwnProperty(key)) {
-        const element = viewModel[key];
+  update = (model) => {
+    if (model === undefined) return;
+    for (const key in model) {
+      if (model.hasOwnProperty(key)) {
+        const element = model[key];
         if (element.modified) {
           this._views[key].update(element.object);
         }
