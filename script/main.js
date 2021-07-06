@@ -1,6 +1,4 @@
 $(document).ready(() => {
-  console.log("ready");
-
   const model = new Model();
   const view = new View();
   const controller = new Controller();
@@ -19,4 +17,6 @@ $(document).ready(() => {
     "icon.png",
     "rhine.png",
   ]);
+
+  console.log("ready");
 });

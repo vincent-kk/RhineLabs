@@ -21,22 +21,22 @@ class Controller {
     };
   };
 
-  objectLinker = (model, view, parser) => {
+  objectLinker(model, view, parser) {
     this._model = model;
     this._view = view;
     this._parser = parser;
-  };
+  }
 
-  addEventHandler = () => {
+  addEventHandler() {
     this._view.addEventHandler({
       baseView: {
-        onStartHandler: this.showOverlay,
-        onChangeHandler: this.updateText,
-        makeGiftCardHander: this.makeGiftCard,
-        onCloseHandler: this.closeOverlay,
+        onStartHandler: this.showOverlay(),
+        onChangeHandler: this.updateText(),
+        makeGiftCardHander: this.makeGiftCard(),
+        onCloseHandler: this.closeOverlay(),
       },
     });
-  };
+  }
 
   /**
    *  [
@@ -45,32 +45,40 @@ class Controller {
    *  ]
    */
 
-  showOverlay = () => {
-    this._model.updateModel([
-      { view: "baseView", object: "textModal", data: { show: true } },
-    ]);
-  };
+  showOverlay() {
+    return () => {
+      this._model.updateModel([
+        { view: "baseView", object: "textModal", data: { show: true } },
+      ]);
+    };
+  }
 
-  updateText = (e) => {
-    this._model.updateModel([
-      { view: "baseView", object: "textValue", data: e.target.value },
-    ]);
-  };
+  updateText() {
+    return (e) => {
+      this._model.updateModel([
+        { view: "baseView", object: "textValue", data: e.target.value },
+      ]);
+    };
+  }
 
-  makeGiftCard = () => {
-    this._view.quickChange("baseView", "goButton");
-    let text = this._model.getModelData("baseView", "textValue");
-    let codes = this._parser.run(text);
-    if (codes.length === 0) {
-      return;
-    }
-    this._model.updateModel([
-      { view: "baseView", object: "codeBook", data: codes },
-    ]);
-  };
-  closeOverlay = () => {
-    this._model.updateModel([
-      { view: "baseView", object: "textModal", data: { show: false } },
-    ]);
-  };
+  makeGiftCard() {
+    return () => {
+      this._view.quickChange("baseView", "goButton");
+      let text = this._model.getModelData("baseView", "textValue");
+      let codes = this._parser.run(text);
+      if (codes.length === 0) {
+        return;
+      }
+      this._model.updateModel([
+        { view: "baseView", object: "codeBook", data: codes },
+      ]);
+    };
+  }
+  closeOverlay() {
+    return () => {
+      this._model.updateModel([
+        { view: "baseView", object: "textModal", data: { show: false } },
+      ]);
+    };
+  }
 }

@@ -11,19 +11,19 @@ class BaseView {
     );
     this._haloEffect = $("#context > #button-section > .effect-halo");
   }
-  objectLinker = (view) => {
+  objectLinker(view) {
     this._view = view;
     this._controller = view.controller;
-  };
+  }
 
-  addEventHandler = (eventHandlers) => {
+  addEventHandler(eventHandlers) {
     this._centerButton.click(eventHandlers["onStartHandler"]);
     this._goButton.click(eventHandlers["makeGiftCardHander"]);
     this._closeButton.click(eventHandlers["onCloseHandler"]);
     this._textInput.change(eventHandlers["onChangeHandler"]);
-  };
+  }
 
-  update = (data) => {
+  update(data) {
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
         const element = data[key];
@@ -33,9 +33,9 @@ class BaseView {
         }
       }
     }
-  };
+  }
 
-  _domUpdater = (name, data) => {
+  _domUpdater(name, data) {
     switch (name) {
       case "textModal":
         this._showTextBox(data);
@@ -45,9 +45,9 @@ class BaseView {
         break;
       default:
     }
-  };
+  }
 
-  quickChange = (element) => {
+  quickChange(element) {
     switch (element) {
       case "goButton":
         this._goButton.addClass("press-button");
@@ -57,13 +57,13 @@ class BaseView {
         break;
       default:
     }
-  };
+  }
 
-  _getCodeData = () => {
+  _getCodeData() {
     return this._textInput.val();
-  };
+  }
 
-  _makeCodeBook = (data) => {
+  _makeCodeBook(data) {
     this._itemBox.empty();
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
@@ -72,9 +72,9 @@ class BaseView {
         this._itemBox.append(cardForm);
       }
     }
-  };
+  }
 
-  _showTextBox = (data) => {
+  _showTextBox(data) {
     if (data.show) {
       this._centerImage.addClass("press-button");
       setTimeout(() => {
@@ -96,10 +96,10 @@ class BaseView {
       this._overlay.addClass("fade-out").removeClass("fade-in");
       this._overlay.css({ opacity: "0", "pointer-events": "none" });
     }
-  };
+  }
 
-  _createGiftCard = (index, pin) => {
-    let element = `<input type="checkbox" id="check_${index}" />
+  _createGiftCard(index, pin) {
+    const element = `<input type="checkbox" id="check_${index}" />
                    <label for="check_${index}">
                      <div class="item animation-dom">
                        <div class="pin">
@@ -109,5 +109,5 @@ class BaseView {
                      </div>
                    </label>`;
     return element;
-  };
+  }
 }
