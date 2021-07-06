@@ -28,9 +28,9 @@ class Model {
     };
   }
 
-  objectLinker = (view) => {
+  objectLinker(view) {
     this._view = view;
-  };
+  }
 
   /**
    * @param {*} changes
@@ -39,7 +39,7 @@ class Model {
    *   ...
    *  ]
    */
-  updateModel = (changes) => {
+  updateModel(changes) {
     for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         const element = changes[key];
@@ -49,18 +49,18 @@ class Model {
       }
     }
     this._updateView();
-  };
+  }
 
-  getModelData = (view, name) => {
+  getModelData(view, name) {
     return this._model[view].object[name].data;
-  };
+  }
 
-  _updateView = () => {
+  _updateView() {
     this._modifiedBubbling();
     this._view.update(this._model);
-  };
+  }
 
-  _modifiedBubbling = () => {
+  _modifiedBubbling() {
     for (const target in this._model) {
       if (this._model.hasOwnProperty(target)) {
         const view = this._model[target];
@@ -72,5 +72,5 @@ class Model {
         }
       }
     }
-  };
+  }
 }
