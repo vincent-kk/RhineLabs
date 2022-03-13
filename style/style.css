@@ -6,7 +6,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans KR", "Montserrat", sans-serif;
+  font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
   transition: 0.7s all;
   overflow: hidden;
   height: 100vh;
@@ -162,13 +162,13 @@ header > #sub-title {
 
 #overlay > #item-box > label > .item > .pin {
   height: 105px;
-  width: 255px;
-  padding: 178px 52px 117px 493px;
+  width: 230px;
+  padding: 172px 65px 123px 505px;
 }
 
 #overlay > #item-box > label > .item > .pin > .pin-num {
   text-align: center;
-  font-size: 20px;
+  font-size: 25px;
   color: black;
 }
 #overlay > #item-box > label > .item > .pin > .pin-num:nth-of-type(1) {
@@ -178,14 +178,14 @@ header > #sub-title {
   margin-top: 5px;
 }
 
-#overlay > #item-box > input[type="checkbox"] {
+#overlay > #item-box > input[type='checkbox'] {
   display: none;
 }
 
-#overlay > #item-box > input[type="checkbox"] + label .item {
+#overlay > #item-box > input[type='checkbox'] + label .item {
   opacity: 1;
 }
-#overlay > #item-box > input[type="checkbox"]:checked + label .item {
+#overlay > #item-box > input[type='checkbox']:checked + label .item {
   opacity: 0.25;
 }
 
