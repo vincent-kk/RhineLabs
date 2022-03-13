@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src https://code.jquery.com/jquery-3.6.0.min.js 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';" />
     <link rel="shortcut icon" href="style//images/rhine_icon.png" />
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="style/animation.css" />
@@ -38,7 +38,7 @@
         <img src="./style/images/icon.png" id="text-icon" />
         <img src="./style/images/cross.png" id="close-icon" />
         <div id="title">카카오톡 메시지를 붙여넣으세요</div>
-        <textarea id="text-input"> </textarea>
+        <textarea id="text-input" maxlength="Infinity"> </textarea>
         <div id="button" class="animation-dom">GO!</div>
       </div>
 
