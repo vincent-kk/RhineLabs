@@ -1,15 +1,17 @@
-class BaseView {
+import $ from 'jquery';
+
+export class BaseView {
   constructor() {
-    this._overlay = $("#overlay");
-    this._textInput = $("#overlay > #text-box > #text-input");
-    this._closeButton = $("#overlay > #text-box > #close-icon ");
-    this._goButton = $("#overlay > #text-box > #button");
-    this._itemBox = $("#overlay > #item-box");
-    this._centerButton = $("#context > #button-section > #button-core");
+    this._overlay = $('#overlay');
+    this._textInput = $('#overlay > #text-box > #text-input');
+    this._closeButton = $('#overlay > #text-box > #close-icon ');
+    this._goButton = $('#overlay > #text-box > #button');
+    this._itemBox = $('#overlay > #item-box');
+    this._centerButton = $('#context > #button-section > #button-core');
     this._centerImage = $(
-      "#context > #button-section > #button-core > #core-img"
+      '#context > #button-section > #button-core > #core-img',
     );
-    this._haloEffect = $("#context > #button-section > .effect-halo");
+    this._haloEffect = $('#context > #button-section > .effect-halo');
   }
   objectLinker(view) {
     this._view = view;
@@ -17,10 +19,10 @@ class BaseView {
   }
 
   addEventHandler(eventHandlers) {
-    this._centerButton.click(eventHandlers["onStartHandler"]);
-    this._goButton.click(eventHandlers["makeGiftCardHander"]);
-    this._closeButton.click(eventHandlers["onCloseHandler"]);
-    this._textInput.change(eventHandlers["onChangeHandler"]);
+    this._centerButton.click(eventHandlers['onStartHandler']);
+    this._goButton.click(eventHandlers['makeGiftCardHander']);
+    this._closeButton.click(eventHandlers['onCloseHandler']);
+    this._textInput.change(eventHandlers['onChangeHandler']);
   }
 
   update(data) {
@@ -37,10 +39,10 @@ class BaseView {
 
   _domUpdater(name, data) {
     switch (name) {
-      case "textModal":
+      case 'textModal':
         this._showTextBox(data);
         break;
-      case "codeBook":
+      case 'codeBook':
         this._makeCodeBook(data);
         break;
       default:
@@ -49,10 +51,10 @@ class BaseView {
 
   quickChange(element) {
     switch (element) {
-      case "goButton":
-        this._goButton.addClass("press-button");
+      case 'goButton':
+        this._goButton.addClass('press-button');
         setTimeout(() => {
-          this._goButton.removeClass("press-button");
+          this._goButton.removeClass('press-button');
         }, 210);
         break;
       default:
@@ -76,25 +78,25 @@ class BaseView {
 
   _showTextBox(data) {
     if (data.show) {
-      this._centerImage.addClass("press-button");
+      this._centerImage.addClass('press-button');
       setTimeout(() => {
-        this._centerImage.removeClass("press-button");
+        this._centerImage.removeClass('press-button');
       }, 210);
       this._haloEffect
-        .addClass("effect-halo-runnig")
-        .removeClass("effect-halo-blink");
-      this._overlay.addClass("fade-in").removeClass("fade-out");
-      this._overlay.css({ opacity: "1", "pointer-events": "auto" });
+        .addClass('effect-halo-runnig')
+        .removeClass('effect-halo-blink');
+      this._overlay.addClass('fade-in').removeClass('fade-out');
+      this._overlay.css({opacity: '1', 'pointer-events': 'auto'});
     } else {
-      this._closeButton.addClass("press-button");
+      this._closeButton.addClass('press-button');
       setTimeout(() => {
-        this._closeButton.removeClass("press-button");
+        this._closeButton.removeClass('press-button');
       }, 210);
       this._haloEffect
-        .addClass("effect-halo-blink")
-        .removeClass("effect-halo-runnig");
-      this._overlay.addClass("fade-out").removeClass("fade-in");
-      this._overlay.css({ opacity: "0", "pointer-events": "none" });
+        .addClass('effect-halo-blink')
+        .removeClass('effect-halo-runnig');
+      this._overlay.addClass('fade-out').removeClass('fade-in');
+      this._overlay.css({opacity: '0', 'pointer-events': 'none'});
     }
   }
 

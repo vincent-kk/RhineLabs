@@ -5,7 +5,7 @@
  * DMM의 Reload를 방지하며 잦은 DOM접근을 차단하여 전체적인 속도 개선에 도움을 준다.
  * MVC구조중 유일하게 상태와 데이터를 저장하는 부분이다.
  */
-class Model {
+export class Model {
   constructor() {
     this._model = {
       baseView: {
@@ -13,11 +13,11 @@ class Model {
         object: {
           textModal: {
             modified: false,
-            data: { show: false },
+            data: {show: false},
           },
           textValue: {
             modified: false,
-            data: "",
+            data: '',
           },
           codeBook: {
             modified: false,

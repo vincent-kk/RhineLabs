@@ -1,7 +1,7 @@
-class CodeParser {
+export class CodeParser {
   constructor(type) {
     switch (type) {
-      case "CultureLand":
+      case 'CultureLand':
         this.codeReg = /\d{4}[-]{0,1}\d{4}[-]{0,1}\d{4}[-]{0,1}\d{6}/g;
         break;
       default:
@@ -13,7 +13,7 @@ class CodeParser {
     let code;
     let codeGroup = [];
     while ((code = this.codeReg.exec(text)) !== null) {
-      let pin = code[0].replace(/-/gi, "");
+      let pin = code[0].replace(/-/gi, '');
       codeGroup.push(this._pinFormat(pin));
     }
     return codeGroup;

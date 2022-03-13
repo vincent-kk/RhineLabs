@@ -1,4 +1,4 @@
-class Controller {
+export class Controller {
   constructor() {}
 
   static preload = (path, images) => {
@@ -48,7 +48,7 @@ class Controller {
   showOverlay() {
     return () => {
       this._model.updateModel([
-        { view: "baseView", object: "textModal", data: { show: true } },
+        {view: 'baseView', object: 'textModal', data: {show: true}},
       ]);
     };
   }
@@ -56,28 +56,28 @@ class Controller {
   updateText() {
     return (e) => {
       this._model.updateModel([
-        { view: "baseView", object: "textValue", data: e.target.value },
+        {view: 'baseView', object: 'textValue', data: e.target.value},
       ]);
     };
   }
 
   makeGiftCard() {
     return () => {
-      this._view.quickChange("baseView", "goButton");
-      let text = this._model.getModelData("baseView", "textValue");
+      this._view.quickChange('baseView', 'goButton');
+      let text = this._model.getModelData('baseView', 'textValue');
       let codes = this._parser.run(text);
       if (codes.length === 0) {
         return;
       }
       this._model.updateModel([
-        { view: "baseView", object: "codeBook", data: codes },
+        {view: 'baseView', object: 'codeBook', data: codes},
       ]);
     };
   }
   closeOverlay() {
     return () => {
       this._model.updateModel([
-        { view: "baseView", object: "textModal", data: { show: false } },
+        {view: 'baseView', object: 'textModal', data: {show: false}},
       ]);
     };
   }
