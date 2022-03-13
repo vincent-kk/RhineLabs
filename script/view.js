@@ -1,4 +1,4 @@
-class View {
+export class View {
   constructor() {}
 
   objectLinker(controller, views) {
@@ -31,7 +31,7 @@ class View {
   getViewData(view, type) {
     let data;
     switch (type) {
-      case "code":
+      case 'code':
         data = this._views[view].getCodeData();
         break;
       default:
